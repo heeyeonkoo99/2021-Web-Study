@@ -23,6 +23,7 @@ getSearchMovie=async()=>{
                     'X-Naver-Client-Secret': SECRET_KEY
                 }
             });
+            console.log(data)
         }
     } catch(error){
         console.log(error);
