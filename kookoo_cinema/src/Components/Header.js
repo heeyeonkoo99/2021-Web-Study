@@ -1,21 +1,24 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {Positioner,WhiteBackground,HeaderContents,Spacer,GradientBorder} from "./HeaderStyled";
 
 const Header=()=>{
     return(
-    <div>
-        <ul>
-            <li>
+    <Positioner>
+    <WhiteBackground>
+    <HeaderContents>
                 <Link to="/movie_lookup">Movie_lookup</Link>
-            </li>
-            <li>
+                </HeaderContents>
+                <HeaderContents>
                 <Link to="/movie_search">Movie_search</Link>
-            </li>
-            <li>
+                </HeaderContents>
+                <HeaderContents>
                 <Link to="/movie_book">Movie_book</Link>
-            </li>
-        </ul>
-    </div>)
+                </HeaderContents>
+                <Spacer/>
+    </WhiteBackground>
+    <GradientBorder/>
+    </Positioner>)
 }
 
 export default Header;
