@@ -12,3 +12,11 @@
 
 - https://msyu1207.tistory.com/entry/React%EB%A1%9C-%EC%98%81%ED%99%94-%EC%A0%95%EB%B3%B4%EB%A5%BC-%EA%B2%80%EC%83%89%ED%95%B4%EB%B3%B4%EC%9E%90-%EB%91%90%EB%B2%88%EC%A7%B8-%EB%84%A4%EC%9D%B4%EB%B2%84-API-%EC%82%AC%EC%9A%A9-CORS-%EC%84%A4%EC%A0%95-%ED%95%98%EA%B8%B0?category=906762
 
+- https://www.daleseo.com/react-router-basic/
+- https://betterprogramming.pub/creating-a-simple-app-with-react-js-f6aa88998952
+- https://velog.io/@ki_blank/React-Router-1.-8njzuummrs
+- https://backend-intro.vlpt.us/5/03.html
+- https://redux-advanced.vlpt.us/3/03.html
+- https://wtss.tistory.com/249
+- https://ibrahimovic.tistory.com/33
+
