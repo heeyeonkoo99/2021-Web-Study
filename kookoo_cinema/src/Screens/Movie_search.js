@@ -1,33 +1,33 @@
-import React,{Fragment} from 'react';
+import React,{Fragment,useEffect,useState} from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import MovieCard from '../Components/MovieCard';
 import 'antd/dist/antd.css';
-import {Input} from "antd";
+import {Input, Row, Col} from "antd";
+
 const {Search}=Input;
 
 const onSearch = value => console.log(value);
 
-class Movie_Search extends React.Component{
-    state={
-        isLoading:true,
-        movies:[],
-        values:""
-    };
+const Movie_Search =()=> {
+   const [query,setQuery]=useState("");
+   const [items,setItems]=useState();
 
-    getSearchMovie=async()=>{
+    
+const getSearchMovie=async()=>{
+        console.log("getSearchMovie");
+
         const ID_KEY="rVT5ICuUPhyW6ATvcSSa";
         const SECRET_KEY="GMzcno2UOj";
-        const search=this.state.value;
         try{
-            if(search===""){
-                this.setState({movies:[],isLoading:false})
+            if(query=== ""){
+                
             } else{
                 const {data: {
                     items
-                }}=await axios.get('https://openapi.naver.com/v1/search/movie.json',{
+                }}=await axios.get('/v1/search/movie.json',{
                     params:{
-                        query:search,
+                        query: query,
                         display:30
                     },
                     headers:{
@@ -35,43 +35,52 @@ class Movie_Search extends React.Component{
                         'X-NAVER-CLIENT-SECRET':SECRET_KEY
                     }
                 });
-                this.setState({movies:items,isLoading:false});
-             console.log("성공+search: "+search)
+                setItems(items);
+             console.log("성공!"+items)
             }
         } catch(error){
-            console.log("실패");
+            console.log("실패!");
             console.log(error);
         }
     };
 
-    componentDidMount(){
-        this.getSearchMovie();
-    };
-    handleChange=(e:any)=>{
+   
+const handleChange=(e:any)=>{
         /*input 이벤트인 onChange를 사용하여 검색어를 입력하면 실시간으로 검색정보(value)를 state에 저장한다.*/
-        this.setState({value:e.target.value});
+       console.log("handleChange에 왔음"+e.type+":",e.target.value);
+        setQuery(e.target.value);
     };
-    handleSubmit=(e:any)=>{
+const handleSubmit=(e:any)=>{
         /*input box에서 엔터를 입력시 정보가 전송되는 기본 이벤트 */
+        console.log("handleSubmit에 왔음"+e.type+":",e.target.value);
         e.preventDefault();
-        this.getSearchMovie();
+        getSearchMovie();
     };
 
-    render(){
-        const {moveis,isLoading}=this.state;
+ 
 
     return(
-        <Fragment>
+     <Fragment>
     <div style={{display:'flex', justifyContent:'center', padding:'3rem'}}>
-        <Search placeholder="영화를 검색해 보세요! :D" type="text" value={this.state.value} onChange={this.handleChange} onSearch={onSearch} enterButton />
+        <Search placeholder="영화를 검색해 보세요! :D" type="text" 
+        onChange={handleChange} onSearch={getSearchMovie} onClick={getSearchMovie}
+        /*아하 이게 antd를 통한 custom된 버튼이기에 onSearch에서 함수를 호출해야되나보다 */ enterButton  />
     </div>
     <div>
-        <MovieCard/>
+       <Row>
+           {items && items.map((movie)=>{
+               return(
+                   <Col xs={24} sm={12} md={6} lg={4} xl={4}>
+                       <MovieCard item={movie}></MovieCard>
+                   </Col>
+               )
+           })}
+       </Row>
     </div>
     </Fragment>
-   );
-}
-}
+    );
+};
+
 
 export default Movie_Search;
 
