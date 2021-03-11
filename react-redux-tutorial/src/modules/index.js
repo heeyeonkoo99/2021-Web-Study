@@ -9,6 +9,8 @@ import todos from './todos';
 
 -액션타입과 액션 생성 함수 정의=>초깃값 설정=> 리듀서 함수 정의=>스토어 만들기=> 스토어의 내장함수(subscribe/dispatch)를 이용하거나
  react-redux라이브러리(유틸함수 connect와 provider)를 사용하여 리덕스 관련 작업 처리!
+
+ 
 */
 
 //루트 리듀서 만들기
