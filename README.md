@@ -28,4 +28,8 @@ react-redux 라이브러리에서 제공하는 유틸함수(connect)와 컴포�
   * redux middleware는 액션을 디스패치했을때 리듀서에서 이를 처리하기에 앞서 사전에 지정된 작업들을 실행하며 middleware는 액션과 리듀서 사이의 중간자라고 볼수있음.    
   (액션=>미들웨어=>리듀서=>스토어)  
   * middleware는 결국 함수를 반환하는 함수를 반환하는 함수를 말함.순서상으로 "액션->(store.dispatch를 실행하면 첫번째 미들웨어부터 다시 처리함)->미들웨어1->next->미들웨어2->next->리듀서->스토어"  
-  * redux-logger,redux-thunk,redux-saga등의 middleware를 사용할수 있다. 
+  * redux-logger,redux-thunk,redux-saga등의 middleware를 사용할수 있다.  
+
+
+-백엔드 프로젝트를 진행중..
+   *koa 미들웨어 사용함. koa의 미들웨어 함수는 두개의 파라미터를 받음(ctx와 next).ctx는 Context의 줄임말로 웹 요청과 응답에 관한 정보를 지니며, next는 현재 처리중인 미들웨어를 호출하는 함수이다. 그렇기에 미들웨어를 등록하고 next함수를 호출하지 않으면, 그다음 미들웨어는 처리하지 않는다. next함수는 Promise를 반환하며 koa는 async/await를 정식으로 지원한다.
